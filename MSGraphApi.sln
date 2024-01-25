@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSGraphApi.Tests", "MSGraph
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSGraphApi.Library", "MSGraphApi.Library\MSGraphApi.Library.csproj", "{9F1B0D95-2465-4E18-86D7-814629DC56F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSGraphApi.Library.Tests", "MSGraphApi.Library.Tests\MSGraphApi.Library.Tests.csproj", "{25D9F0F5-13A2-4B02-B4E7-6E6017D86BF5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSGraphApi.Downloader", "MSGraphApi.Downloader\MSGraphApi.Downloader.csproj", "{0D35CA41-C9C1-465B-AA74-400E42528B3E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSGraphApi.Downloader.Tests", "MSGraphApi.Downloader.Tests\MSGraphApi.Downloader.Tests.csproj", "{8203432C-9498-4140-B8DA-BDDFB6E4CBA1}"

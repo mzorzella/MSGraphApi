@@ -4,46 +4,37 @@ using System.Text.Json;
 using Microsoft.Graph.Models;
 using MSGraphApi.Library.Services.GraphApi;
 
-public class GroupsOperationStrategy : BaseOperationStrategy
+public class GroupsOperationStrategy : BaseOperationStrategy<List<Group>?>
 {
-    private GroupCollectionResponse? _data;
-
     public GroupsOperationStrategy(
         IGraphApi graphApi,
         GraphApiSettings settings,
-        IDataStorage dataStorage
+        IDataStorage dataStorage,
+        IFileSystemHelpers fileSystemHelpers
     )
-        : base(graphApi, settings, dataStorage) { }
+        : base(graphApi, settings, dataStorage, fileSystemHelpers) { }
 
     public override string Operation => "Download Groups";
 
-    public override async Task<string?> FetchDataAsync(string? nextPageToken = null)
+    protected override async Task<OperationResponse<List<Group>?>> InvokeFetchDataAsync(
+        string? nextPageToken
+    )
     {
-        _data = await _graphApi.GetGroupsAsync(nextPageToken);
-        return _data?.OdataNextLink;
+        var res = await _graphApi.GetGroupsAsync(nextPageToken);
+        return new OperationResponse<List<Group>?>()
+        {
+            NextPageToken = res?.OdataNextLink,
+            Data = res?.Value
+        };
     }
 
-    public override async Task<GraphDownloaderSummary> StoreDataAsync()
+    protected override string GetFormattedFilename(dynamic item)
     {
-        var workingDir = $"{Directory.GetCurrentDirectory()}/MSGraph/Groups";
-        var tasks = new List<Task>();
-        _data?.Value?.ForEach(g =>
-            tasks.Add(
-                _dataStorage.Store(
-                    $"{workingDir}/{g.DisplayName}-[{g.Id}].json",
-                    JsonSerializer.Serialize(
-                        g,
-                        new JsonSerializerOptions() { WriteIndented = true }
-                    )
-                )
-            )
-        );
-        await Task.WhenAll(tasks);
+        return $"{item.DisplayName}-[{item.Id}]";
+    }
 
-        return new GraphDownloaderSummary()
-        {
-            LocationPath = workingDir,
-            ObjectsCount = _data?.Value?.Count ?? 0
-        };
+    protected override string GetStorageFolder()
+    {
+        return "Groups";
     }
 }

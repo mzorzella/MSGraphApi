@@ -14,4 +14,14 @@ public class FileSystemHelpers : IFileSystemHelpers
     {
         return Directory.CreateDirectory(directory);
     }
+
+    public string GetCurrentDirectory()
+    {
+        return Directory.GetCurrentDirectory();
+    }
+
+    public Task WriteAllTextAsync(string path, string content)
+    {
+        return File.WriteAllTextAsync(path, content);
+    }
 }

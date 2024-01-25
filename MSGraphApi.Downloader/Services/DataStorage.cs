@@ -1,26 +1,19 @@
-using Microsoft.Graph.Models;
-
 public class DataStorage : IDataStorage
 {
     private readonly IFileSystemHelpers _fileSystemHelpers;
 
     public DataStorage(IFileSystemHelpers fileSystemHelpers)
     {
-        this._fileSystemHelpers = fileSystemHelpers;
+        _fileSystemHelpers = fileSystemHelpers;
     }
 
-    public async Task Store(string filename, string content)
+    public async Task StoreData(string filename, string content)
     {
-        var workingDir = Path.GetDirectoryName(filename);
-        if (!Directory.Exists(workingDir))
+        var workingDir = _fileSystemHelpers.GetDirectoryName(filename);
+        if (!_fileSystemHelpers.DirectoryExists(workingDir!))
         {
-            Directory.CreateDirectory(workingDir!);
+            _fileSystemHelpers.CreateDirectory(workingDir!);
         }
-        await File.WriteAllTextAsync(filename, content);
+        await _fileSystemHelpers.WriteAllTextAsync(filename, content);
     }
-}
-
-public interface IDataStorage
-{
-    Task Store(string fileName, string content);
 }
