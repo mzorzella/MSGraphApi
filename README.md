@@ -26,25 +26,25 @@ Run the application
 
 ### High level overview:
 
-I interpreted this assignment as a starting point for a system that allows the download of tenant's data living inside MS Graph, into another storage system.
+I interpreted this assignment as a starting point for the creation of a system that downloads tenant's data from a MS Graph Api into an external storage system.
 
-Therefore, I wanted to organize this code closer to how I'd build it for a prod environment, rather then just a technical exercise.
+The code is organized similarly to how it would have been written for a prod environment, rather then just a technical exercise.
 
-Furthermore, it has been a couple of years since when I worked with C# last time, I wanted to brush up by C# knowledge a bit and have some fun with my favorite programming language. So, Please forgive if I'm not using the latest cool libraries in today's C# ecosystem :-).
+Furthermore, it has been a couple of years since when I worked with C# last time, I wanted to brush up my C# knowledge and have some fun with my favorite programming language. So, Please forgive if I'm not using the latest cool libraries in today's C# ecosystem :-).
 
 ### Key considerations
 
 #### Strategy Pattern
 
-The implementation leverages the strategy pattern to allow the system to be easily extensible as new download strategies are required.
+The implementation leverages the strategy pattern to allow the system to be easily extended as new download strategies are needed.
 
-The system currently implements two strategies for downloading Groups and Users (users is not currently enabled with the current Graph api creds).
+The system currently provides two strategies for downloading Groups and Users (users is not currently allowed with current Graph Api creds).
 
-The core strategy functionality is implemented inside the `MSGraphApi.Downloader` library. The class `GraphDownloader` implements the execution context, The `OperationStrategies` folder contains the concrete strategies implementation. I also encapsulated part of the implementation of the concrete strategies inside `BaseOperationStrategy` class (Template Method Pattern).
+The core functionality (context) is implemented inside the `MSGraphApi.Downloader` library and class `GraphDownloader`. The `OperationStrategies` folder contains the concrete strategy implementations. Part of the strategy logic is also implemented insde the class `BaseOperationStrategy` as an example of Template Method Pattern.
 
 #### Dependency Injection
 
-All DI system is configured in `Program.cs`. The system uses services registered in the DI container of type `IOperationStrategy` to dynamically defined the operations available via the CLI of this app.
+All DI system is configured in `Program.cs`. The system uses services registered in the DI container of type `IOperationStrategy` to dynamically define the operations available via the CLI selection of this app.
 
 #### Pagination
 
@@ -52,8 +52,8 @@ To support large data downloads, the system uses pagination to fetch and then st
 
 #### Unit testing
 
-All core logic of the application was test.
+All core logic of the application was test. Some tests in certain classes were omitted.
 
 #### Error handling
 
-The system adds error handling in some core aspect of the implementation logic.
+The system implments error handling in some core aspect of the logic.
