@@ -42,7 +42,7 @@ public class GraphApi : IGraphApi
             _client
             ?? throw new ArgumentNullException("Graph has not been initialized for app-only auth");
 
-        var api = _client.Groups;
+        var api = _client.Users;
         if (odataNextLink != null)
         {
             api.WithUrl(odataNextLink);
