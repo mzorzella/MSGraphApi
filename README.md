@@ -5,7 +5,7 @@ First, download and install the [.NET SDK](https://dotnet.microsoft.com/en-us/do
 Download the code from this repository:
 
 ```
-REPO URL HERE
+https://github.com/mzorzella/MSGraphApi
 ```
 
 Add your client secret to the .NET Secret Manager. In your command-line interface, change the directory to the location of `MSGraphApi.csproj` and run the following commands, replacing <client-secret> with your client secret.
