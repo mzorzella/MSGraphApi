@@ -32,7 +32,7 @@ public class GraphApi : IGraphApi
         }
         return api.GetAsync(requestConfiguration =>
         {
-            requestConfiguration.QueryParameters.Top = 2;
+            requestConfiguration.QueryParameters.Top = 10;
         });
     }
 
