@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSGraphApi", "MSGraphApi\MSGraphApi.csproj", "{32720A50-FA5C-4EB5-AB6D-469950623426}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSGraphApi.Tests", "MSGraphApi.Tests\MSGraphApi.Tests.csproj", "{12952B00-065B-45BC-A2E9-3D5135F55FA9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSGraphApi.Library", "MSGraphApi.Library\MSGraphApi.Library.csproj", "{9F1B0D95-2465-4E18-86D7-814629DC56F2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSGraphApi.Downloader", "MSGraphApi.Downloader\MSGraphApi.Downloader.csproj", "{0D35CA41-C9C1-465B-AA74-400E42528B3E}"
